@@ -1,0 +1,7 @@
+{
+  "name": "scoma1",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
