@@ -1,20 +1,61 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-buttons slot="primary">
+      <ion-button routerLink="/account">
+        <ion-icon slot="icon-only" name="person-circle"></ion-icon>
+      </ion-button>
+      <ion-button id="open-modal">
+        <ion-icon slot="icon-only" name="add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Home</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <ion-list>
+    <ion-item class="ion-margin">
+      <ion-input placeholder="Search agreement..."></ion-input>
+      <ion-button>
+        <ion-icon slot="icon-only" name="search"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <!-- Add Agreement Modal -->
+  <ion-modal id="add-agreement-modal" trigger="open-modal" (willDismiss)="onWillDismiss($event)">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-button class="ios-only" (click)="cancel()">Cancel</ion-button>
+          </ion-buttons>
+          <ion-title>Add New Todo</ion-title>
+          <ion-buttons slot="end">
+            <ion-button class="ios-only" (click)="confirm()" [strong]="true">
+              Confirm
+            </ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <ion-item lines="full">
+          <ion-input id="name-input" type="text" placeholder="Agreement name" [(ngModel)]="name"></ion-input>
+        </ion-item>
+        <ion-item lines="full">
+          <ion-textarea id="text-input" [autoGrow]="true" placeholder="Agreement text" [(ngModel)]="text"></ion-textarea>
+        </ion-item>
+      </ion-content>
+      <ion-footer class="md-only">
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-button (click)="cancel()">Cancel</ion-button>
+          </ion-buttons>
+          <ion-buttons slot="end">
+            <ion-button (click)="confirm()" [strong]="true">Confirm</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-footer>
+    </ng-template>
+  </ion-modal>
 </ion-content>

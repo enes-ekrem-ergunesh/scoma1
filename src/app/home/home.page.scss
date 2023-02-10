@@ -25,3 +25,13 @@
 #container a {
   text-decoration: none;
 }
+
+//Hide elements designed for Android only
+.ios .md-only {
+  display: none;
+}
+
+//Hide elements designed for IOS only
+.md .ios-only {
+  display: none;
+}
